@@ -452,4 +452,11 @@
 
     <!-- Property icon setting-->
     <string name="toast_icon_property_info">This Feature\'s icon id is %1$s</string>
+
+    <!-- Static image API notification-->
+    <string name="static_image_api_notification_content_title">Wifi locations</string>
+    <string name="static_image_api_notification_bitmap_fail">Failed to retrieve an image from the Static Image API</string>
+    <string name="static_image_api_notification_description">%1$d wifi locations within %2$d feet of the device</string>
+    <string name="static_image_api_notification_no_wifi_nearby">Zero wifi locations nearby</string>
+
 </resources>

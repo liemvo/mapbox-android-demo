@@ -140,12 +140,14 @@ public class LocationChangeListeningActivity extends AppCompatActivity implement
   @Override
   public void onPermissionResult(boolean granted) {
     if (granted) {
-      if (mapboxMap.getStyle() != null) {
-        enableLocationComponent(mapboxMap.getStyle());
-      }
+      mapboxMap.getStyle(new Style.OnStyleLoaded() {
+        @Override
+        public void onStyleLoaded(@NonNull Style style) {
+          enableLocationComponent(style);
+        }
+      });
     } else {
       Toast.makeText(this, R.string.user_location_permission_not_granted, Toast.LENGTH_LONG).show();
-      finish();
     }
   }
 
@@ -194,7 +196,6 @@ public class LocationChangeListeningActivity extends AppCompatActivity implement
      */
     @Override
     public void onFailure(@NonNull Exception exception) {
-      Log.d("LocationChangeActivity", exception.getLocalizedMessage());
       LocationChangeListeningActivity activity = activityWeakReference.get();
       if (activity != null) {
         Toast.makeText(activity, exception.getLocalizedMessage(),
